@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grzegorz Sztandera - Konsultacje 1:1 | Szkolenia | Warsztaty | Eventy | Trener | Wystąpienia Publiczne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0c;
+    --surface: #111115;
+    --surface2: #18181f;
+    --border: rgba(255,255,255,0.07);
+    --accent: #e8ff47;
+    --accent2: #47ffb8;
+    --text: #f0f0f0;
+    --muted: #888899;
+    --gutter: clamp(1.5rem, 5vw, 5rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem var(--gutter);
+    background: rgba(10,10,12,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #0a0a0c !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(232,255,71,0.3);
+    color: #0a0a0c !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem var(--gutter) 4rem;
+    position: relative;
+    overflow: hidden;
+    gap: 4rem;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(232,255,71,0.08) 0%, transparent 70%);
+    top: -200px;
+    right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(71,255,184,0.05) 0%, transparent 70%);
+    bottom: -100px;
+    left: 0;
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232,255,71,0.1);
+    border: 1px solid rgba(232,255,71,0.25);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.35s forwards;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-desc {
+    font-size: 1.125rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.5s forwards;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.65s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #0a0a0c;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(232,255,71,0.35);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(232,255,71,0.2);
+  }
+
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  .hero-quote {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.9rem;
+    position: relative;
+  }
+
+  .hero-quote::before {
+    content: '"';
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+    margin-bottom: -0.5rem;
+  }
+
+  .hero-quote strong {
+    display: block;
+    margin-top: 0.75rem;
+    color: var(--text);
+    font-style: normal;
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* LOGOS */
+  .logos {
+    padding: 3rem var(--gutter);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logos-label {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .logos-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem 2.5rem;
+  }
+
+  .logo-pill {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .logo-pill:hover {
+    color: var(--text);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem var(--gutter); }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* OFFERS */
+  .offers { background: var(--surface); }
+
+  .offers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .offer-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .offer-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232,255,71,0.2);
+  }
+
+  .offer-card.featured {
+    border-color: rgba(232,255,71,0.3);
+    background: linear-gradient(135deg, #111115 0%, #141418 100%);
+  }
+
+  .offer-card.featured::before {
+    content: 'Bestseller';
+    position: absolute;
+    top: 1.25rem; right: 1.25rem;
+    background: var(--accent);
+    color: #0a0a0c;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+  }
+
+  .offer-icon {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .offer-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .offer-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .offer-price {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .offer-price span {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  .offer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .offer-link:hover { gap: 0.75rem; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-img {
+    position: relative;
+  }
+
+  .about-img-box {
+    aspect-ratio: 4/5;
+    background: var(--surface2);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: grayscale(20%);
+    transition: filter 0.4s;
+  }
+
+  .about-img-box img:hover {
+    filter: grayscale(0%);
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--accent);
+    color: #0a0a0c;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .about-content p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-content p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .about-tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8rem;
+    padding: 0.35rem 0.875rem;
+    border-radius: 100px;
+  }
+
+  /* TOPICS */
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 3.5rem;
+  }
+
+  .topic-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .topic-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(71,255,184,0.25);
+  }
+
+  .topic-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .topic-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .topic-desc {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .rating-summary {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .rating-big {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .rating-sub {
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--surface); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .testimonial-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .testimonial-quote {
+    font-size: 2.5rem;
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    color: var(--muted);
+    font-size: 0.925rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .testimonial-avatar {
+    width: 42px; height: 42px;
+    background: var(--surface2);
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+
+  .testimonial-name {
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+
+  .testimonial-role {
+    color: var(--muted);
+    font-size: 0.775rem;
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232,255,71,0.06) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .cta-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 4rem;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .cta-box h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .cta-box p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem var(--gutter);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer p {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding-top: 7rem;
+    }
+    .hero-stats { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-img { display: none; }
+    .offers-header { flex-direction: column; }
+    nav .nav-links { display: none; }
+    .cta-box { padding: 2.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">SZTANDERA.PRO - Twój profesjonalny partner w rozwoju<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#oferta">Oferta</a></li>
+    <li><a href="#o-mnie">O mnie</a></li>
+    <li><a href="#tematy">Tematy</a></li>
+    <li><a href="#opinie">Opinie</a></li>
+    <li><a href="https://www.naffy.io/grzegorzsztandera/poznajmy-sie-i-porozmawiajmy-2x2" class="nav-cta">Zarezerwuj →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Jestem Dostępny · Odpiszę w 12h</div>
+    <h1>Pomagam mówić <em>lepiej</em> i działać sprawniej</h1>
+    <p class="hero-desc">
+      Trener wystąpień publicznych, Mówca i organizator TEDx, Facylitator LEGO® Serious Play®,
+      Wykładowca akademicki, Autor książek. Pracuję z ludźmi i zespołami, które chcą prawdziwej, trwałej zmiany.
+    </p>
+    <div class="hero-actions">
+      <a href="https://www.naffy.io/grzegorzsztandera/poznajmy-sie-i-porozmawiajmy-2x2" class="btn-primary">
+        Darmowa rozmowa 30 min →
+      </a>
+      <a href="#oferta" class="btn-secondary">
+        Zobacz moją ofertę
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-number">100+</div>
+      <div class="stat-label">Wystąpień konferencyjnych i warsztatów w Polsce i Europie</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Zorganizowane eventy TEDx (Pabianice, Łódź)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Opublikowane książki (dwie kolejne w drodze)</div>
+    </div>
+    <div class="hero-quote">
+      W swojej pracy zawsze zadaję jedno pytanie: „A co jeśli zrobimy to inaczej?"
+      <strong>— Grzegorz Sztandera</strong>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos reveal">
+  <p class="logos-label">Wystąpienia i warsztaty m.in. dla:</p>
+  <div class="logos-row">
+    <span class="logo-pill">Devoxx</span>
+    <span class="logo-pill">Infoshare</span>
+    <span class="logo-pill">4Developers</span>
+    <span class="logo-pill">TEDxSzymborska</span>
+    <span class="logo-pill">DevOpsCon Munich</span>
+    <span class="logo-pill">JDD</span>
+    <span class="logo-pill">Confitura</span>
+    <span class="logo-pill">ML Conference</span>
+    <span class="logo-pill">webinale Berlin</span>
+    <span class="logo-pill">Zwinna Łódź</span>
+    <span class="logo-pill">PMI</span>
+    <span class="logo-pill">TEDxSGH</span>
+  </div>
+</div>
+
+<!-- OFFER -->
+<section class="offers" id="oferta">
+  <div class="offers-header reveal">
+    <div>
+      <p class="section-eyebrow">Oferta</p>
+      <h2 class="section-title">Jak mogę Ci pomóc?</h2>
+    </div>
+    <p class="section-desc">Wszystko realizuję osobiście – bez gotowców, bez korpomowy, na bazie lat doświadczeń.</p>
+  </div>
+
+  <div class="offers-grid">
+    <div class="offer-card reveal">
+      <div class="offer-icon">🎙️</div>
+      <div class="offer-title">Rozmowa indywidualna</div>
+      <div class="offer-desc">Nie wiesz, od czego zacząć? To zacznijmy razem. 30 minut, zero zobowiązań – tylko konkretna rozmowa o tym, czego potrzebujesz.</div>
+      <div class="offer-price">Bezpłatna <span>/ 30 minut</span></div>
+      <a href="https://www.naffy.io/grzegorzsztandera/poznajmy-sie-i-porozmawiajmy-2x2" class="offer-link">Zarezerwuj →</a>
+    </div>
+
+    <div class="offer-card featured reveal">
+      <div class="offer-icon">🔥</div>
+      <div class="offer-title">Konsultacja indywidualna</div>
+      <div class="offer-desc">Jedno spotkanie może zmienić wszystko. Przychodzisz z konkretnym wyzwaniem – wychodzisz z konkretnym planem. Bez teorii, bez gotowców. Konkretna praca nad Twoim wyzwaniem.</div>
+      <div class="offer-price">240 zł <span>/ 50 minut</span></div>
+      <a href="https://www.naffy.io/grzegorzsztandera/mentoring-1-1-AkR-NyS6" class="offer-link">Zarezerwuj →</a>
+    </div>
+
+    <div class="offer-card reveal">
+      <div class="offer-icon">🧱</div>
+      <div class="offer-title">Warsztaty LEGO® Serious Play® i Super Mario®</div>
+      <div class="offer-desc">Klocki to tylko narzędzie. Prawdziwa praca dzieje się między ludźmi. Te warsztaty to prawdzona metoda, która odblokowuje komunikację, ujawnia ukryte problemy i buduje wspólne rozumienie celów – szybciej niż jakikolwiek PowerPoint.</div>
+      <div class="offer-price">4 000 zł <span>/ warsztat</span></div>
+      <a href="https://www.naffy.io/grzegorzsztandera/warsztaty-z-klockami-lego-komunikacja-wspolpraca-lub-twoje-wyzwanie-U3x" class="offer-link">Zarezerwuj →</a>
+    </div>
+
+    <div class="offer-card reveal">
+      <div class="offer-icon">🎤</div>
+      <div class="offer-title">Warsztat wystąpień publicznych</div>
+      <div class="offer-desc">Trema? Brak pewności siebie na scenie? To normalne – i to można zmienić. Konkretne narzędzia: jak zbudować przekaz, panować nad stresem i porwać publiczność – niezależnie czy mówisz do 5 czy 500 osób.</div>
+      <div class="offer-price">4 000 zł <span>/ warsztat</span></div>
+      <a href="https://www.naffy.io/grzegorzsztandera/grupowy-warsztat-wystapien-publicznych-N7m" class="offer-link">Zarezerwuj →</a>
+    </div>
+
+    <div class="offer-card reveal">
+      <div class="offer-icon">🚀</div>
+      <div class="offer-title">Prowadzenie Twojego eventu</div>
+      <div class="offer-desc">Dobry prowadzący to różnica między eventem, który ludzie pamiętają, a takim, który po prostu się odbył. Wychodzę na scenę przygotowany, wyczuwam energię sali - dbam o rytm i flow całego dnia.</div>
+      <div class="offer-price">4 000 zł <span>/ event</span></div>
+      <a href="https://www.naffy.io/grzegorzsztandera/poprowadze-twoj-event-sIj" class="offer-link">Zarezerwuj →</a>
+    </div>
+
+    <div class="offer-card reveal">
+      <div class="offer-icon">💡</div>
+      <div class="offer-title">Prelekcja na Twoim evencie</div>
+      <div class="offer-desc">Szukasz prelegenta, który nie czyta ze slajdów? Przemawiam na konferencjach technologicznych i biznesowych w Polsce i Europie (Devoxx, Infoshare, Mobile Trends, TEDx i inne). Na scenę wnoszę wiedzę i energię, które zostają w uczestnikach na długo po zakończeniu eventu.</div>
+      <div class="offer-price">2 900 zł <span>/ wystąpienie</span></div>
+      <a href="https://www.naffy.io/grzegorzsztandera/poprowadze-twoj-event-sIj-xumd" class="offer-link">Zarezerwuj →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="o-mnie">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <div class="about-img-box">
+        <img src="https://mowcy.pl/wp-content/uploads/2025/07/7.png" alt="Grzegorz Sztandera – mówca i organizator TEDx, Trener wystąpień publicznych" loading="lazy">
+      </div>
+      <div class="about-badge">Członek<br>Stowarzyszenia<br>Profesjonalnych<br>Mówczyń i Mówców</div>
+    </div>
+
+    <div class="about-content reveal">
+      <p class="section-eyebrow">O mnie</p>
+      <h2 class="section-title">Nie tylko mówię.<br>Buduję. Rozwijam.</h2>
+      <p>
+        Jestem trenerem wystąpień publicznych, facylitatorem warsztatów LEGO® Serious Play® i Super Mario®,
+        <strong>założycielem TEDxPabianice</strong> i współorganizatorem TEDxŁódź/TEDxUniversity of Lodz.
+        Na co dzień prowadzę złożone projekty technologiczne na styku IT, biznesu i regulacji w bankowości.
+      </p>
+      <p>
+        Zbudowałem od zera obszar kompetencji DevOps w polskim software house'ie.
+        Napisałem cztery książki – serię dla dzieci „Ty Bąbliku!" i korporacyjną powieść „IT GO HOME".
+        Trzecia i czwarta są w drodze...
+      </p>
+      <p>
+        <strong>Przemawiam na konferencjach w Polsce i Europie</strong> – Devoxx, Infoshare, DevOpsCon Berlin & Munich,
+        JDD, 4Developers i wielu innych. <strong>Regularnie szkolę mówców do wystąpień TEDx i nie tylko.</strong>
+      </p>
+      <p>
+        Prywatnie tata dwóch synów, co – jak twierdzę – jest doskonałym przygotowaniem do storytellingu.
+      </p>
+      <div class="about-tags">
+        <span class="about-tag">Mówca TEDx</span>
+        <span class="about-tag">LEGO® Serious Play®</span>
+        <span class="about-tag">Trener wystąpień publicznych</span>
+        <span class="about-tag">Autor książek</span>
+        <span class="about-tag">Wykładowca akademicki</span>
+        <span class="about-tag">Manager IT</span>
+        <span class="about-tag">Prelegent</span>
+        <span class="about-tag">Buduję zespoły</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section id="tematy" style="background: var(--surface);">
+  <div class="reveal">
+    <p class="section-eyebrow">Tematy wystąpień</p>
+    <h2 class="section-title">Czym zajmuję się na scenie</h2>
+    <p class="section-desc">Moje tematy łączą m.in. świat IT z ludzką stroną pracy – bo najlepsze wyniki powstają na ich styku.</p>
+  </div>
+  <div class="topics-grid">
+    <div class="topic-card reveal">
+      <div class="topic-icon">🏗️</div>
+      <div class="topic-title">Budowanie zespołów ponad granicami</div>
+      <div class="topic-desc">Jak tworzyć zgrany zespół w rozproszonym, wielokulturowym środowisku firmy.</div>
+    </div>
+    <div class="topic-card reveal">
+      <div class="topic-icon">☢️</div>
+      <div class="topic-title">Surviving Operational Chernobyl</div>
+      <div class="topic-desc">Jak przeżyć operacyjną katastrofę i wyjść z niej silniejszym – case study prosto z produkcji.</div>
+    </div>
+    <div class="topic-card reveal">
+      <div class="topic-icon">🤖</div>
+      <div class="topic-title">Ludzie nie zmienią się w AI</div>
+      <div class="topic-desc">O tym, dlaczego człowiek pozostaje kluczowym elementem w erze sztucznej inteligencji.</div>
+    </div>
+    <div class="topic-card reveal">
+      <div class="topic-icon">🔄</div>
+      <div class="topic-title">Przestańmy teoretyzować! Rozwiązujmy realne problemy Agile</div>
+      <div class="topic-desc">Praktyczne podejście do zwinności – bez buzzwordów, z konkretnymi narzędziami.</div>
+    </div>
+    <div class="topic-card reveal">
+      <div class="topic-icon">💾</div>
+      <div class="topic-title">Life backup – czy Twój plan jest gotowy na nieoczekiwane?</div>
+      <div class="topic-desc">Czym jest gotowość na nieoczekiwane – strategia dla każdego.</div>
+    </div>
+    <div class="topic-card reveal">
+      <div class="topic-icon">🗣️</div>
+      <div class="topic-title">Skuteczna komunikacja - LEGO®</div>
+      <div class="topic-desc">Warsztat z klockami LEGO® Serious Play® – dla zespołów, które chcą się naprawdę zrozumieć.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="opinie">
+  <div class="reveal">
+    <p class="section-eyebrow">Opinie</p>
+    <h2 class="section-title">Co o mnie mówią inni?</h2>
+  </div>
+  <!-- RATING SUMMARY -->
+  <div class="rating-summary reveal">
+    <div class="rating-big">⭐ 4.9 / 5</div>
+    <div class="rating-sub">Średnia ocen ze warsztatów i wystąpień</div>
+  </div>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Jeden z niewielu trenerów, który faktycznie skupia się na ludziach, daje im przestrzeń, rozumie, że szkolenie jest zarówno dla uczestników jak i dla prowadzącego. BAARDZO sympatycznie spędzony czas – świetny wyjściowy punkt do dalszych rozmów.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">★</div>
+        <div>
+          <div class="testimonial-name">Uczestnik warsztatu</div>
+          <div class="testimonial-role">LEGO® Serious Play® – Komunikacja i wzajemne zrozumienie · 5/5</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Bardzo dobry warsztat. Łatwo i przyjemnie pokazuje jak bardzo różni się to, co słyszymy od tego, co zostało powiedziane. Obowiązkowy warsztat dla wszystkich współpracujących zespołów.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">★</div>
+        <div>
+          <div class="testimonial-name">Uczestnik warsztatu</div>
+          <div class="testimonial-role">LEGO® Serious Play® – Komunikacja i wzajemne zrozumienie · 5/5</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">The workshop is amazing and shows a problem in communication. Also shows the importance of collaboration.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">★</div>
+        <div>
+          <div class="testimonial-name">Conference participant</div>
+          <div class="testimonial-role">ACE! Conference 2024 · 5/5</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Bardzo wartościowe szkolenie. Udało się złapać wiele „smaczków" do wdrożenia na przyszłość. Super content i świetna zabawa – polecam!</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">★</div>
+        <div>
+          <div class="testimonial-name">Uczestnik warsztatu PMI Łódź</div>
+          <div class="testimonial-role">LEGO® Serious Play® – Komunikacja i wzajemne zrozumienie · 5/5</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Grzegorz był moim liderem w dużym zespole devopsowym – moim zdaniem najlepszym, z jakim do tej pory pracowałem. Każdy kto go zna to wie, a kto go pozna na pewno się nie zawiedzie. Praca z nim to czysta przyjemność.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">★</div>
+        <div>
+          <div class="testimonial-name">DevOps Engineer</div>
+          <div class="testimonial-role">Rekomendacja zawodowa LinkedIn · MakoLab</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Grzegorz wniósł dużą wartość w rozwój firmy. Framework usługi DevOps jest wysoko oceniany przez klientów, w tym największe marki z branży automotive. Trzeba podkreślić jego wysokie umiejętności sprzedażowe oraz pasję w propagowaniu wiedzy nie tylko dla specjalistów.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">★</div>
+        <div>
+          <div class="testimonial-name">CEO</div>
+          <div class="testimonial-role">Rekomendacja zawodowa LinkedIn · Management</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-box reveal">
+    <p class="section-eyebrow" style="text-align:center;">Gotowy na zmianę?</p>
+    <h2>Zacznijmy od rozmowy.<br>Bez zobowiązań.</h2>
+    <p>30 minut. Darmowo. Ty, ja i konkret – bez lania wody i gotowych formułek.</p>
+    <div class="cta-actions">
+      <a href="https://www.naffy.io/grzegorzsztandera/poznajmy-sie-i-porozmawiajmy-2x2" class="btn-primary">
+        Zarezerwuj darmową rozmowę →
+      </a>
+      <a href="https://www.naffy.io/grzegorzsztandera" class="btn-secondary">
+        Cała oferta
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Grzegorz Sztandera · <a href="tel:+48798263372" style="color:var(--muted);text-decoration:none;">+48 798 263 372</a></p>
+  <ul class="footer-links">
+    <li><a href="https://www.linkedin.com/in/grzegorzsztandera" target="_blank">LinkedIn</a></li>
+    <li><a href="https://www.instagram.com/grzegorz.sztandera" target="_blank">Instagram</a></li>
+    <li><a href="https://sessionize.com/grzegorzsztandera" target="_blank">Sessionize</a></li>
+    <li><a href="https://www.naffy.io/grzegorzsztandera" target="_blank">Zarezerwuj</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 120) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--text)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
