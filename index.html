@@ -777,6 +777,99 @@
 
   .footer-links a:hover { color: var(--text); }
 
+  .logo-pill a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+  }
+
+  .logo-pill:has(a):hover {
+    color: var(--accent);
+    border-color: rgba(232,255,71,0.3);
+  }
+
+  /* VIDEO SECTION */
+  .videos {
+    background: var(--surface);
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .video-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .video-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232,255,71,0.2);
+  }
+
+  .video-thumb {
+    display: block;
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+  }
+
+  .video-card:hover .video-thumb img {
+    transform: scale(1.04);
+  }
+
+  .video-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.35);
+    transition: background 0.3s;
+  }
+
+  .video-card:hover .video-play {
+    background: rgba(0,0,0,0.15);
+  }
+
+  .video-play-btn {
+    width: 60px;
+    height: 60px;
+    background: rgba(232,255,71,0.92);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .video-card:hover .video-play-btn {
+    transform: scale(1.1);
+    background: var(--accent);
+  }
+
+  .video-play-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: #0a0a0c;
+    margin-left: 3px;
+  }
+
   /* DIVIDER */
   .divider {
     width: 100%;
@@ -821,6 +914,7 @@
     <li><a href="#o-mnie">O mnie</a></li>
     <li><a href="#tematy">Tematy</a></li>
     <li><a href="#opinie">Opinie</a></li>
+    <li><a href="#wideo">Wideo</a></li>
     <li><a href="mailto:kontakt@sztandera.pro" class="nav-cta">Napisz do mnie →</a></li>
   </ul>
 </nav>
@@ -872,18 +966,18 @@
 <div class="logos reveal">
   <p class="logos-label">Zrealizowałem wystąpienia i warsztaty m.in. dla:</p>
   <div class="logos-row">
-    <span class="logo-pill">Devoxx</span>
-    <span class="logo-pill">Infoshare</span>
-    <span class="logo-pill">4Developers</span>
-    <span class="logo-pill">TEDxSzymborska</span>
-    <span class="logo-pill">DevOpsCon Munich</span>
-    <span class="logo-pill">JDD</span>
-    <span class="logo-pill">Confitura</span>
-    <span class="logo-pill">ML Conference</span>
-    <span class="logo-pill">webinale Berlin</span>
-    <span class="logo-pill">Zwinna Łódź</span>
-    <span class="logo-pill">PMI</span>
-    <span class="logo-pill">TEDxSGH</span>
+    <span class="logo-pill"><a href="https://devoxx.pl/speaker/?id=2112&srsltid=AfmBOopX0MqBychaAjOtPcSBj9PAT0yRphnyNdBocvuyRitOgsMswdUJ" target="_blank" rel="noopener">Devoxx</a></span>
+    <span class="logo-pill"><a href="https://infoshare.pl/speakers-list/grzegorz-sztandera-o2399gc48-one.html" target="_blank" rel="noopener">Infoshare</a></span>
+    <span class="logo-pill"><a href="https://www.instagram.com/reel/DP0_vcPDDnl/" target="_blank" rel="noopener">4Developers</a></span>
+    <span class="logo-pill"><a href="https://www.ted.com/tedx/events/61592" target="_blank" rel="noopener">TEDxSzymborska</a></span>
+    <span class="logo-pill"><a href="https://devopscon.io/speaker/grzegorz-sztandera/" target="_blank" rel="noopener">DevOpsCon Munich</a></span>
+    <span class="logo-pill"><a href="https://jdd.org.pl/bio_2025/#id=59874" target="_blank" rel="noopener">JDD</a></span>
+    <span class="logo-pill"><a href="https://2025.confitura.pl/speakers/e67fd0a5-7a23-4a3f-aa59-983f272e0cc4" target="_blank" rel="noopener">Confitura</a></span>
+    <span class="logo-pill"><a href="https://mlconference.ai/speaker/grzegorz-sztandera/" target="_blank" rel="noopener">ML Conference</a></span>
+    <span class="logo-pill"><a href="https://webinale.com/speaker/grzegorz-sztandera/" target="_blank" rel="noopener">webinale Berlin</a></span>
+    <span class="logo-pill"><a href="https://crossweb.pl/cykle-wydarzen/zwinna-lodz/prelegenci/" target="_blank" rel="noopener">Zwinna Łódź</a></span>
+    <span class="logo-pill"><a href="https://strefapmi.pl/author/grzegorz-sztandera/" target="_blank" rel="noopener">PMI</a></span>
+    <span class="logo-pill"><a href="https://www.ted.com/tedx/events/59207" target="_blank" rel="noopener">TEDxSGH</a></span>
   </div>
 </div>
 
@@ -1030,6 +1124,12 @@
       <div class="topic-title">Skuteczna komunikacja - LEGO®</div>
       <div class="topic-desc">Warsztat z klockami LEGO® Serious Play® – dla zespołów, które chcą się naprawdę zrozumieć.</div>
     </div>
+    <div class="topic-card reveal" style="border-color: rgba(232,255,71,0.2); background: linear-gradient(135deg, var(--surface) 0%, #141418 100%);">
+      <div class="topic-icon" style="font-size: 2rem; background: rgba(232,255,71,0.1); width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">❓</div>
+      <div class="topic-title" style="margin-top: 0.75rem; color: var(--accent);">Wystąpienie szyte na miarę</div>
+      <div class="topic-desc">Jeśli potrzebujesz konkretnego wystąpienia – napisz do mnie. Przygotuję prelekcję, warsztaty lub panel dyskusyjny dedykowany Twojemu wydarzeniu.</div>
+      <a href="mailto:kontakt@sztandera.pro" style="display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.25rem; color: var(--accent); font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: gap 0.2s;">Napisz do mnie →</a>
+    </div>
   </div>
 </section>
 
@@ -1119,6 +1219,47 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="videos" id="wideo">
+  <div class="reveal">
+    <p class="section-eyebrow">Na żywo</p>
+    <h2 class="section-title">Moje wystąpienia</h2>
+    <p class="section-desc">Zanim zdecydujesz – obejrzyj. Tu jestem w swoim żywiole.</p>
+  </div>
+  <div class="videos-grid">
+    <div class="video-card reveal">
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=6jFa2L3BQ8s" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/6jFa2L3BQ8s/hqdefault.jpg" alt="Grzegorz Sztandera – wystąpienie 1" loading="lazy">
+        <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+      </a>
+    </div>
+    <div class="video-card reveal">
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=wNtguFQU0sE" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/wNtguFQU0sE/hqdefault.jpg" alt="Grzegorz Sztandera – wystąpienie 2" loading="lazy">
+        <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+      </a>
+    </div>
+    <div class="video-card reveal">
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=r_-oPDqayBY" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/r_-oPDqayBY/hqdefault.jpg" alt="Grzegorz Sztandera – wystąpienie 3" loading="lazy">
+        <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+      </a>
+    </div>
+    <div class="video-card reveal">
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=rYLqI-HVlv0" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/rYLqI-HVlv0/hqdefault.jpg" alt="Grzegorz Sztandera – wystąpienie 4" loading="lazy">
+        <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+      </a>
+    </div>
+    <div class="video-card reveal">
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=gk-mQrIDBtg" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/gk-mQrIDBtg/hqdefault.jpg" alt="Grzegorz Sztandera – wystąpienie 5" loading="lazy">
+        <div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+      </a>
+    </div>
   </div>
 </section>
 
